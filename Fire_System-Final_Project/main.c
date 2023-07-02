@@ -5,10 +5,7 @@
 #include "UART\UART.h"
 #include "DC_Motor\DCMotor.h"
 
-int Temp(int digitalValue)
-{
-	return ((digitalValue*150*2.56) /(1.5*1023)) * 2 - 1;
-}
+int Temp(int digitalValue);
 
 int main()
 {
@@ -30,4 +27,10 @@ int main()
 	}
 
 
+}
+
+
+int Temp(int digitalValue)
+{
+	return ((digitalValue*150*2.56) /(1.5*1023)) * 2 - 1;
 }

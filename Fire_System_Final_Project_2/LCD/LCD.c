@@ -88,6 +88,7 @@ void LCD_displayStringRowColumn(uint8 row, uint8 col, const char* Str)
 void LCD_integerToString(int data)
 {
 	int len = 0 , num = data;
+	int absolute = abs(data);
 	static char ch[16];
 
 	if(num == 0)
@@ -101,18 +102,23 @@ void LCD_integerToString(int data)
 	}
 	}
 
-	num = data;
+	num = absolute;
 
 	for(int i = len - 1; i >= 0; i--)
 	{
-		num = data%10;
-		data /= 10;
+		num = absolute%10;
+		absolute /= 10;
 		ch[i] = num + '0';
 	}
 	ch[len] = '\0';
 	//Turning the integer into string
-
-	LCD_displayString(ch);
+	if(data >= 0)
+		LCD_displayString(ch);
+	else if(data < 0)
+	{
+		LCD_displayCharacter('-');
+		LCD_displayString(ch);
+	}
 	//displays the new string
 }
 

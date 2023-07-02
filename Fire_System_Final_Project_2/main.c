@@ -19,10 +19,8 @@ int main()
 	int burning_flag = 0;
 	int temp = 0;
 
-	/*LCD_moveCursor(0, 2);
-	LCD_displayString("FAN is OFF");
-	LCD_moveCursor(1, 2);
-	LCD_displayString("Temp = ");*/
+	LCD_integerToString(-15);
+	_delay_ms(1000);
 
 	while(1)
 	{
@@ -37,7 +35,7 @@ int main()
 			//LED ON
 			LED_turnOn();
 			//BUZZER ON
-			//buzzer_turnOn();
+			buzzer_turnOn();
 			//FAN ON
 			DCMotor_rotate(CW);
 
