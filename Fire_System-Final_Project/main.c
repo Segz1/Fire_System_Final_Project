@@ -25,8 +25,6 @@ int main()
 	{
 		digVal = ADC_Read(0);
 		temp = Temp(digVal);
-		LCD_clearScreen();
-		LCD_integerToString(temp);
 		UART_sendInteger(temp);
 		_delay_ms(1000);
 	}
